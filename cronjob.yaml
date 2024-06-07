@@ -1,0 +1,16 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: report-generator
+spec:
+  schedule: "*/2 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: report-generator
+            image: aj85430/report-generator:1.0
+            imagePullPolicy: IfNotPresent
+          restartPolicy: OnFailure
+
